@@ -1,4 +1,4 @@
-\# 5-Minute Learning Video
+\# RTL_workshop_5Min_video
 
 
 
@@ -36,5 +36,5 @@ This video presents my learning from the RTL Design and Physical Design training
 
 
 
-\[Watch My 5-Minute RTL Workshop Summary](PASTE\_YOUR\_GOOGLE\_DRIVE\_LINK\_HERE)
+\[Watch My 5-Minute RTL Workshop Summary](https://drive.google.com/file/d/18wiWqKPU9G6DXfFjRRif-qyooLGCti9d/view?usp=sharing)
 
