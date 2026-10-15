@@ -27,9 +27,10 @@ Each stage contributes to transforming the design into a physical implementation
 
 **Physical Design Screenshot**
 
-![Physical Design Screenshot](screenshots/physical_design_layout.png)
+<img width="600"  alt="s" src="https://github.com/user-attachments/assets/16de77aa-036e-4838-80eb-df4be811bd93" />
 
-*Figure 1: Physical-design view from the actual project.*
+
+
 
 ## 3. Multi-Corner Static Timing Analysis
 
