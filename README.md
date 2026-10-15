@@ -24,3 +24,9 @@ RTL Design, Verilog Simulation, Synthesis Optimization, and ASIC Physical Design
 - OpenLane
 - SKY130 PDK
 - OpenROAD
+
+## 5-Minute RTL Workshop Summary Video
+
+This video summarizes my learning and practical work during the RTL Design Workshop and Physical Design modules.
+
+**Video Link:** [Watch my RTL Workshop Summary](https://drive.google.com/file/d/18wiWqKPU9G6DXfFjRRif-qyooLGCti9d/view?usp=sharing)
