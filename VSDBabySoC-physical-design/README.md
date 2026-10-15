@@ -97,8 +97,3 @@ This project documents the VSDBabySoC physical-design workflow and timing-analys
 
 The screenshots and reports provide evidence of the practical work performed. The final conclusions will be based on the actual implementation stages completed and the timing results obtained.
 
-## 9. Repository Structure
-
-- `README.md` — Project overview, design flow, timing analysis, and results.
-- `screenshots/` — Physical-design, terminal, and timing-analysis screenshots.
-- `reports/` — STA reports and other relevant project documents.
