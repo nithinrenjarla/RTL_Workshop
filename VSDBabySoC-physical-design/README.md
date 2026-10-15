@@ -95,5 +95,5 @@ The final implementation status should be based on the available tool logs, repo
 
 This project documents the VSDBabySoC physical-design workflow and timing-analysis concepts associated with the SKY130 HD standard-cell library.
 
-The screenshots and reports provide evidence of the practical work performed. The final conclusions will be based on the actual implementation stages completed and the timing results obtained.
+The pictures and reports provide evidence of the practical work performed. The final conclusions will be based on the actual implementation stages completed and the timing results obtained.
 
