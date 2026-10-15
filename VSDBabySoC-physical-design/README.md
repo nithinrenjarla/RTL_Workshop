@@ -42,9 +42,11 @@ The analysis helps identify timing concerns and assess whether the relevant setu
 
 **STA Terminal Screenshot**
 
-![STA Terminal Output](screenshots/sta_terminal.png)
+<img width="700" alt="VSDBabySoC_STA_Timing" src="https://github.com/user-attachments/assets/b134b607-c271-4d38-ad86-acb79dfb36f9" />
 
-*Figure 2: Terminal output from the actual timing-analysis workflow.*
+
+<img width="700" alt="W" src="https://github.com/user-attachments/assets/95350d1e-c9fa-4f5d-ba95-f07dcc6834ad" />
+
 
 ## 4. Setup and Hold Timing
 
@@ -75,19 +77,11 @@ Record the values from your own STA report in the table below.
 | Setup timing status | Add the reported status |
 | Hold timing status | Add the reported status |
 
-**Timing Report Screenshot**
+## 6. Timing Analysis Pictures
 
-![Timing Report](screenshots/timing_report.png)
+<img width="600" alt="h" src="https://github.com/user-attachments/assets/a9e96b5a-e17e-486a-93e0-ec158d53eefb" />
 
-*Figure 3: Timing report showing the actual project results.*
 
-## 6. Timing Analysis Screenshots
-
-Add a screenshot of a timing path, timing-analysis view, or relevant tool window if available.
-
-![Timing Analysis View](screenshots/timing_analysis.png)
-
-*Figure 4: Timing-analysis view from the actual project.*
 
 ## 7. Results and Observations
 
