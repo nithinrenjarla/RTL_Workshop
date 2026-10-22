@@ -74,8 +74,8 @@ The actual state machine, counter width, switching conditions, and delay thresho
 | Stage | Tool |
 |---|---|
 | RTL design | Verilog HDL |
-| Simulation | Icarus Verilog, if used |
-| Waveform viewing | GTKWave, if used |
+| Simulation | Icarus Verilog |
+| Waveform viewing | GTKWave |
 | Logic synthesis | Yosys through the configured flow |
 | Timing analysis | OpenSTA through the configured flow |
 | Physical design | OpenLane |
