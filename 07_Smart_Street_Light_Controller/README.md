@@ -622,9 +622,15 @@ The recorded run generated a final GDSII layout artifact of approximately 306 KB
 
 The project provides a foundation for further work on switching control, fault handling, and physical implementation of digital control systems.
 
-## Author
+#### Author
 
-**Project:** Smart Street Light Controller Using Verilog HDL  
-**Workshop:** RTL Design Workshop  
-**Technology:** SKY130A  
-**Implementation Flow:** OpenLane RTL-to-GDSII
+**Nithin Renjarla**  
+B.Tech – Electronics and Communication Engineering (ECE)  
+Anurag University, Hyderabad
+
+**Project:** Smart Street Light Controller Using Verilog HDL
+
+**Environment:** Ubuntu on VirtualBox, Icarus Verilog, GTKWave, Yosys, OpenSTA, OpenLane, Sky130 PDK, Magic, and KLayout.
+
+**Repository:** [RTL_Workshop](https://github.com/nithinrenjarla/RTL_Workshop)
+
