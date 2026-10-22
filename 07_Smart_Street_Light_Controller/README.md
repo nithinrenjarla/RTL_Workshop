@@ -138,9 +138,144 @@ Record only the tests actually implemented and run. Include the expected behavio
 
 The RTL describes the digital control behavior of the street light system. The module's ports, registers, combinational logic, and sequential logic should be documented directly from the source.
 
-Add a screenshot of the actual Verilog source or a relevant code excerpt here.
+```
+```verilog
+module smart_street_light #(
+    parameter DELAY_CYCLES = 4
+)(
+    input  wire clk,
+    input  wire reset,
+    input  wire sensor_night,
+    input  wire sensor_valid,
 
-![RTL Design](screenshots/01_rtl_simulation.png)
+    output reg  street_light,
+    output reg  fault
+);
+
+    // FSM states
+    localparam LIGHT_OFF   = 3'b000;
+    localparam WAIT_NIGHT  = 3'b001;
+    localparam LIGHT_ON    = 3'b010;
+    localparam WAIT_DAY    = 3'b011;
+    localparam FAULT_STATE = 3'b100;
+
+    localparam COUNT_WIDTH =
+        (DELAY_CYCLES <= 1) ? 1 : $clog2(DELAY_CYCLES);
+
+    reg [2:0] state;
+    reg [COUNT_WIDTH-1:0] timer_count;
+
+    // Sequential FSM and timer
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            state        <= LIGHT_OFF;
+            timer_count  <= 0;
+            street_light <= 1'b0;
+            fault        <= 1'b0;
+        end
+        else begin
+            case (state)
+
+                LIGHT_OFF: begin
+                    street_light <= 1'b0;
+                    timer_count  <= 0;
+                    fault        <= 1'b0;
+
+                    if (!sensor_valid) begin
+                        state <= FAULT_STATE;
+                        fault <= 1'b1;
+                    end
+                    else if (sensor_night) begin
+                        state <= WAIT_NIGHT;
+                    end
+                end
+
+                WAIT_NIGHT: begin
+                    street_light <= 1'b0;
+                    fault <= 1'b0;
+
+                    if (!sensor_valid) begin
+                        state <= FAULT_STATE;
+                        timer_count <= 0;
+                        fault <= 1'b1;
+                    end
+                    else if (!sensor_night) begin
+                        state <= LIGHT_OFF;
+                        timer_count <= 0;
+                    end
+                    else if (timer_count >= DELAY_CYCLES - 1) begin
+                        state <= LIGHT_ON;
+                        street_light <= 1'b1;
+                        timer_count <= 0;
+                    end
+                    else begin
+                        timer_count <= timer_count + 1'b1;
+                    end
+                end
+
+                LIGHT_ON: begin
+                    street_light <= 1'b1;
+                    timer_count <= 0;
+                    fault <= 1'b0;
+
+                    if (!sensor_valid) begin
+                        state <= FAULT_STATE;
+                        street_light <= 1'b0;
+                        fault <= 1'b1;
+                    end
+                    else if (!sensor_night) begin
+                        state <= WAIT_DAY;
+                    end
+                end
+
+                WAIT_DAY: begin
+                    street_light <= 1'b1;
+                    fault <= 1'b0;
+
+                    if (!sensor_valid) begin
+                        state <= FAULT_STATE;
+                        street_light <= 1'b0;
+                        timer_count <= 0;
+                        fault <= 1'b1;
+                    end
+                    else if (sensor_night) begin
+                        state <= LIGHT_ON;
+                        timer_count <= 0;
+                    end
+                    else if (timer_count >= DELAY_CYCLES - 1) begin
+                        state <= LIGHT_OFF;
+                        street_light <= 1'b0;
+                        timer_count <= 0;
+                    end
+                    else begin
+                        timer_count <= timer_count + 1'b1;
+                    end
+                end
+
+                FAULT_STATE: begin
+                    street_light <= 1'b0;
+                    timer_count <= 0;
+                    fault <= 1'b1;
+
+                    if (sensor_valid) begin
+                        state <= LIGHT_OFF;
+                        fault <= 1'b0;
+                    end
+                end
+
+                default: begin
+                    state <= FAULT_STATE;
+                    street_light <= 1'b0;
+                    timer_count <= 0;
+                    fault <= 1'b1;
+                end
+
+            endcase
+        end
+    end
+
+endmodule
+```
 
 ## 8. Testbench
 
