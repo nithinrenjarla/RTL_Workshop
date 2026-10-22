@@ -440,7 +440,7 @@ endmodule
 ```
 ## 9. Simulation
 
-If Icarus Verilog was used, the simulation can be run from the directory containing the RTL and testbench:
+ Icarus Verilog was used, the simulation can be run from the directory containing the RTL and testbench:
 
 ```bash
 iverilog -o sim.out rtl/smart_street_light.v testbench/tb_smart_street_light.v
@@ -448,8 +448,6 @@ vvp sim.out
 ```
 
 The command assumes the filenames and module structure match those shown above. Adjust the paths if your actual files differ.
-
-**Result:** Insert the observed simulation outcome here. Do not claim all tests passed without the corresponding output.
 
 ## 10. Waveform
 
@@ -460,10 +458,9 @@ If a VCD waveform was generated and GTKWave is installed, it can be opened with:
 ```bash
 gtkwave dump.vcd
 ```
+<img width="950" alt="gtkwaveform" src="https://github.com/user-attachments/assets/55dfb2a3-7f1c-4d51-9060-3c53328008f1" />
 
-Replace `dump.vcd` with the actual waveform filename.
 
-![Simulation Waveform](screenshots/02_waveform.png)
 
 ## 11. Synthesis
 
