@@ -572,7 +572,7 @@ The GDSII file can be inspected with a compatible layout viewer such as Magic or
 | LVS | PASS — Circuits match uniquely |
 | Pre-layout WNS | 0.00 ns |
 | Pre-layout TNS | 0.00 ns |
-| Antenna Verification | Check final antenna report |
+| Antenna Verification | 0 violations |
 
 ## 17. Implementation Results
 
@@ -580,11 +580,8 @@ The previously observed implementation produced a GDSII layout artifact of appro
 
 The final summary report was also inspected during the earlier project work. For a reproducible submission, include the actual report file and screenshots of the relevant final results.
 
-Suggested report location:
+<img width="950" alt="final_flow_summary" src="https://github.com/user-attachments/assets/67b4887b-6853-4ea8-805e-338fb0432143" />
 
-`reports/final_summary_report.csv`
-
-Use the actual CSV and report filenames from the recorded OpenLane run.
 
 ## 18. Additional Verification
 
@@ -595,7 +592,10 @@ Additional verification may include:
 - Review of post-route timing paths.
 - Additional simulation of switching and fault scenarios.
 
-Only document checks that were actually executed. No ngspice verification result is currently established for this project.
+<img width="950" alt="c" src="https://github.com/user-attachments/assets/9959f877-93ae-4272-81c6-72a8af718cde" />
+
+
+
 
 ## 19. Feasibility
 
