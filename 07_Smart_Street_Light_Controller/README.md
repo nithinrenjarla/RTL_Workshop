@@ -281,7 +281,8 @@ endmodule
 **Expected source location:** `testbench/tb_smart_street_light.v`
 
 The testbench should provide the clock and input sequences required to exercise the controller and observe its outputs.
-````timescale 1ns/1ps
+```verilog
+`timescale 1ns/1ps
 
 module tb_smart_street_light;
 
@@ -296,7 +297,7 @@ module tb_smart_street_light;
     integer pass_count = 0;
     integer fail_count = 0;
 
-    // Use a short delay for simulation
+    // Instantiate the Smart Street Light Controller
     smart_street_light #(
         .DELAY_CYCLES(4)
     ) DUT (
@@ -308,10 +309,10 @@ module tb_smart_street_light;
         .fault(fault)
     );
 
-    // 10 ns clock period
+    // Generate 10 ns clock
     always #5 clk = ~clk;
 
-    // Wait for clock edges and avoid sampling races
+    // Wait for the specified number of clock cycles
     task tick;
         input integer cycles;
         integer i;
@@ -323,7 +324,7 @@ module tb_smart_street_light;
         end
     endtask
 
-    // Automatic output checker
+    // Check expected outputs
     task check_output;
         input expected_light;
         input expected_fault;
@@ -346,6 +347,9 @@ module tb_smart_street_light;
     endtask
 
     initial begin
+        $dumpfile("smart_street_light.vcd");
+        $dumpvars(0, tb_smart_street_light);
+
         clk = 0;
         reset = 1;
         sensor_night = 0;
@@ -360,7 +364,8 @@ module tb_smart_street_light;
         reset = 0;
         check_output(0, 0, "Reset: light OFF");
 
-        // Test 2: Night begins
+        // Test 2: Night detection and delay
+        @(negedge clk);
         sensor_night = 1;
         tick(4);
         check_output(0, 0, "Night delay: light remains OFF");
@@ -369,7 +374,8 @@ module tb_smart_street_light;
         tick(1);
         check_output(1, 0, "Night delay expired: light ON");
 
-        // Test 4: Day begins
+        // Test 4: Day detection and delay
+        @(negedge clk);
         sensor_night = 0;
         tick(4);
         check_output(1, 0, "Day delay: light remains ON");
@@ -379,32 +385,40 @@ module tb_smart_street_light;
         check_output(0, 0, "Day delay expired: light OFF");
 
         // Test 6: Cancel pending night transition
+        @(negedge clk);
         sensor_night = 1;
         tick(2);
+        @(negedge clk);
         sensor_night = 0;
         tick(1);
         check_output(0, 0, "Night request cancelled");
 
         // Test 7: Sensor fault
+        @(negedge clk);
         sensor_valid = 0;
         tick(1);
         check_output(0, 1, "Sensor fault: light OFF");
 
         // Test 8: Recover from sensor fault
+        @(negedge clk);
         sensor_valid = 1;
         tick(1);
         check_output(0, 0, "Fault recovery");
 
-        // Test 9: Reset while light is ON
+        // Test 9: Turn light ON before reset
+        @(negedge clk);
         sensor_night = 1;
         tick(5);
         check_output(1, 0, "Light ON before reset");
 
+        // Test 10: Asynchronous reset
         reset = 1;
         #1;
         check_output(0, 0, "Asynchronous reset");
 
+        // Test 11: Normal operation after reset
         reset = 0;
+        @(negedge clk);
         sensor_night = 0;
         tick(1);
         check_output(0, 0, "Normal operation after reset");
@@ -424,7 +438,6 @@ module tb_smart_street_light;
 
 endmodule
 ```
-
 ## 9. Simulation
 
 If Icarus Verilog was used, the simulation can be run from the directory containing the RTL and testbench:
