@@ -468,9 +468,12 @@ The RTL-to-GDSII flow includes logic synthesis, which maps the RTL into a gate-l
 
 The synthesis report can be used to examine the mapped cell count, area estimates, and synthesis warnings.
 
-![Synthesis Results](screenshots/03_synthesis.png)
+<img width="850" alt="yosys res" src="https://github.com/user-attachments/assets/f994250e-c75b-4f6d-b3c0-2209707de9b2" />
 
-Record the actual synthesis statistics from the generated reports.
+
+<img width="850" alt="yosys show" src="https://github.com/user-attachments/assets/1a5a4b87-420e-4a30-834e-4c97f3864d82" />
+
+
 
 ## 12. Pre-Layout Static Timing Analysis
 
