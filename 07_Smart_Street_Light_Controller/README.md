@@ -531,7 +531,12 @@ Post-route timing analysis evaluates timing after physical interconnections have
 
 Record the available setup and hold slack, critical paths, timing corners, and any remaining violations from the final run's reports.
 
-Do not infer timing closure from GDS generation alone.
+<img width="950" alt="STA_tiiming_report" src="https://github.com/user-attachments/assets/6e11f154-a77b-42fd-9095-4acbdb146dc1" />
+
+
+<img width="950" alt="sta report" src="https://github.com/user-attachments/assets/5e5a26b5-b181-48c2-b9a2-37d3033dd5ab" />
+
+
 
 ## 15. Final Layout (GDS)
 
@@ -550,7 +555,8 @@ Confirm that this path and file exist in the original VSD environment before usi
 
 The GDSII file can be inspected with a compatible layout viewer such as Magic or KLayout when the necessary technology files are configured.
 
-![Final GDS Layout](screenshots/09_final_gds.png)
+<img width="950" alt="GDS layout" src="https://github.com/user-attachments/assets/42a04369-72ba-4c5f-a2dc-63feda04977b" />
+
 
 ## 16. Signoff Summary
 
