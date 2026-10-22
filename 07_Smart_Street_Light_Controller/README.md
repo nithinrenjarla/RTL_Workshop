@@ -556,7 +556,7 @@ The GDSII file can be inspected with a compatible layout viewer such as Magic or
 <img width="950" alt="GDS layout" src="https://github.com/user-attachments/assets/42a04369-72ba-4c5f-a2dc-63feda04977b" />
 
 
-## 16.Summary
+## 16.Signoff Summary
 
 
 ### Physical Design Verification
