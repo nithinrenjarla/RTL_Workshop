@@ -486,9 +486,8 @@ Relevant evidence may include:
 - Critical timing paths.
 - Timing warnings and unconstrained paths.
 
-![Pre-Layout Timing Analysis](screenshots/07_timing_report.png)
+<img width="850" alt="prelayout sta" src="https://github.com/user-attachments/assets/eb68d1ad-79ee-4776-93ec-94f0baa7c40f" />
 
-Insert the actual report values when available.
 
 ## 13. Physical Design (OpenLane)
 
@@ -502,13 +501,15 @@ The flow was executed using the SKY130A PDK and the `sky130_fd_sc_hd` standard-c
 
 Floorplanning establishes the core and die regions and prepares the design for physical implementation.
 
-![Floorplan](screenshots/04_floorplan.png)
+<img width="950" alt="floorplan" src="https://github.com/user-attachments/assets/9bd58e05-d53c-4fc4-99e9-ace1bcabe21b" />
+
 
 ### 13.2 Placement
 
 Placement assigns physical locations to the standard cells within the floorplan.
 
-![Placement](screenshots/05_placement.png)
+<img width="950" alt="S" src="https://github.com/user-attachments/assets/3934137f-baf4-49a4-bb7a-8f5563604c9d" />
+
 
 ### 13.3 Clock Tree Synthesis
 
