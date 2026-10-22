@@ -138,7 +138,6 @@ Record only the tests actually implemented and run. Include the expected behavio
 
 The RTL describes the digital control behavior of the street light system. The module's ports, registers, combinational logic, and sequential logic should be documented directly from the source.
 
-```
 ```verilog
 module smart_street_light #(
     parameter DELAY_CYCLES = 4
@@ -282,8 +281,149 @@ endmodule
 **Expected source location:** `testbench/tb_smart_street_light.v`
 
 The testbench should provide the clock and input sequences required to exercise the controller and observe its outputs.
+````timescale 1ns/1ps
 
-Document the scenarios covered by the testbench, along with the simulation command and actual pass/fail output.
+module tb_smart_street_light;
+
+    reg clk;
+    reg reset;
+    reg sensor_night;
+    reg sensor_valid;
+
+    wire street_light;
+    wire fault;
+
+    integer pass_count = 0;
+    integer fail_count = 0;
+
+    // Use a short delay for simulation
+    smart_street_light #(
+        .DELAY_CYCLES(4)
+    ) DUT (
+        .clk(clk),
+        .reset(reset),
+        .sensor_night(sensor_night),
+        .sensor_valid(sensor_valid),
+        .street_light(street_light),
+        .fault(fault)
+    );
+
+    // 10 ns clock period
+    always #5 clk = ~clk;
+
+    // Wait for clock edges and avoid sampling races
+    task tick;
+        input integer cycles;
+        integer i;
+        begin
+            for (i = 0; i < cycles; i = i + 1) begin
+                @(posedge clk);
+                #1;
+            end
+        end
+    endtask
+
+    // Automatic output checker
+    task check_output;
+        input expected_light;
+        input expected_fault;
+        input [200*8-1:0] test_name;
+        begin
+            if ((street_light === expected_light) &&
+                (fault === expected_fault)) begin
+                $display("PASS: %0s", test_name);
+                pass_count = pass_count + 1;
+            end
+            else begin
+                $display(
+                    "FAIL: %0s | Light=%b expected=%b | Fault=%b expected=%b",
+                    test_name, street_light, expected_light,
+                    fault, expected_fault
+                );
+                fail_count = fail_count + 1;
+            end
+        end
+    endtask
+
+    initial begin
+        clk = 0;
+        reset = 1;
+        sensor_night = 0;
+        sensor_valid = 1;
+
+        $display("====================================");
+        $display(" SMART STREET LIGHT TEST STARTED");
+        $display("====================================");
+
+        // Test 1: Reset
+        #12;
+        reset = 0;
+        check_output(0, 0, "Reset: light OFF");
+
+        // Test 2: Night begins
+        sensor_night = 1;
+        tick(4);
+        check_output(0, 0, "Night delay: light remains OFF");
+
+        // Test 3: Night delay expires
+        tick(1);
+        check_output(1, 0, "Night delay expired: light ON");
+
+        // Test 4: Day begins
+        sensor_night = 0;
+        tick(4);
+        check_output(1, 0, "Day delay: light remains ON");
+
+        // Test 5: Day delay expires
+        tick(1);
+        check_output(0, 0, "Day delay expired: light OFF");
+
+        // Test 6: Cancel pending night transition
+        sensor_night = 1;
+        tick(2);
+        sensor_night = 0;
+        tick(1);
+        check_output(0, 0, "Night request cancelled");
+
+        // Test 7: Sensor fault
+        sensor_valid = 0;
+        tick(1);
+        check_output(0, 1, "Sensor fault: light OFF");
+
+        // Test 8: Recover from sensor fault
+        sensor_valid = 1;
+        tick(1);
+        check_output(0, 0, "Fault recovery");
+
+        // Test 9: Reset while light is ON
+        sensor_night = 1;
+        tick(5);
+        check_output(1, 0, "Light ON before reset");
+
+        reset = 1;
+        #1;
+        check_output(0, 0, "Asynchronous reset");
+
+        reset = 0;
+        sensor_night = 0;
+        tick(1);
+        check_output(0, 0, "Normal operation after reset");
+
+        $display("====================================");
+        $display("Tests passed: %0d", pass_count);
+        $display("Tests failed: %0d", fail_count);
+
+        if (fail_count == 0)
+            $display("RESULT: ALL TESTS PASSED");
+        else
+            $display("RESULT: TEST FAILURES FOUND");
+
+        $display("====================================");
+        $finish;
+    end
+
+endmodule
+```
 
 ## 9. Simulation
 
