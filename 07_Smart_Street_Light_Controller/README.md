@@ -515,13 +515,15 @@ Placement assigns physical locations to the standard cells within the floorplan.
 
 Clock-tree synthesis is applicable when the configured flow includes a clock tree. Include evidence from the actual run if this stage was executed.
 
+<img width="950" alt="CTS" src="https://github.com/user-attachments/assets/62af626d-96b2-4d5d-bac8-be228b5c9c85" />
+
+
 ### 13.4 Routing
 
 Routing creates the physical interconnections between the placed cells.
 
-![Routing](screenshots/06_routing.png)
+<img width="950" alt="Routing" src="https://github.com/user-attachments/assets/207ee3a3-6c82-4e44-a1db-f33860628c3d" />
 
-The actual run reports should be used to document the completion status and any routing violations.
 
 ## 14. Post-Route Static Timing Analysis
 
