@@ -1,4 +1,4 @@
-<img width="1920" height="1020" alt="Screenshot 2026-10-22 211803" src="https://github.com/user-attachments/assets/dae41f11-002e-4d0a-a408-13707cfa95bc" /># Smart Street Light Controller Using Verilog HDL
+ ># Smart Street Light Controller Using Verilog HDL
 
 A Verilog RTL project for a smart street light controller, developed as part of the RTL Design Workshop. The design was processed through the OpenLane RTL-to-GDSII implementation flow targeting the SkyWater SKY130A technology platform. The recorded run generated a final GDSII layout artifact.
 
@@ -600,6 +600,8 @@ Additional verification may include:
 
 <img width="950" alt="ree" src="https://github.com/user-attachments/assets/81836396-f209-4057-9f81-b7c661248a09" />
 
+
+<img width="950" alt="n" src="https://github.com/user-attachments/assets/988560f2-f022-4986-a6b7-1bd2da24ad55" />
 
 
 
