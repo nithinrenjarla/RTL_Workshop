@@ -621,7 +621,7 @@ The recorded run generated a final GDSII layout artifact of approximately 306 KB
 
 The project provides a foundation for further work on switching control, fault handling, and physical implementation of digital control systems.
 
-#### Author
+#### AUTHOR
 
 **Nithin Renjarla**  
 B.Tech – Electronics and Communication Engineering (ECE)  
