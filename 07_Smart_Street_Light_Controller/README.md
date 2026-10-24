@@ -47,11 +47,11 @@ The exact signal names and descriptions must match the implemented Verilog modul
 
 | Signal | Direction | Description |
 |---|---|---|
-| Clock and reset, if defined | Input | Timing and initialization control |
+| Clock and reset | Input | Timing and initialization control |
 | Switching-control inputs | Input | Inputs used to determine light operation |
-| Fault-related inputs, if defined | Input | Inputs used by the implemented fault logic |
+| Fault-related inputs | Input | Inputs used by the implemented fault logic |
 | Street light control output | Output | Output defined by the RTL |
-| Status or fault outputs, if defined | Output | Status signals defined by the RTL |
+| Status or fault outputs | Output | Status signals defined by the RTL |
 
 
 
