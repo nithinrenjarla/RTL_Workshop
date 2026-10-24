@@ -621,6 +621,12 @@ The recorded run generated a final GDSII layout artifact of approximately 306 KB
 
 The project provides a foundation for further work on switching control, fault handling, and physical implementation of digital control systems.
 
+## Project Video Demonstration
+
+The Smart Street Light Controller is implemented using Verilog HDL and processed through the OpenLane RTL-to-GDSII physical design flow targeting the SkyWater SKY130A technology platform.
+
+**Watch the Project Video:** [Smart Street Light Controller — Google Drive](https://drive.google.com/file/d/1xrXMIVDb9N9INdPTz2Pj2_Q3SypAJwt_/view?usp=sharing)
+
 #### AUTHOR
 
 **Nithin Renjarla**  
