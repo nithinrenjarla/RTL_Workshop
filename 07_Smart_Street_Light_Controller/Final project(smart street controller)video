@@ -1,0 +1,7 @@
+## Project Video Demonstration
+
+The Smart Street Light Controller is implemented using Verilog HDL and processed through the OpenLane RTL-to-GDSII physical design flow targeting the SkyWater SKY130A technology platform.
+
+The project video demonstrates the project workflow and implementation.
+
+**Watch the Project Video:** [Smart Street Light Controller — Google Drive](https://drive.google.com/file/d/1xrXMIVDb9N9INdPTz2Pj2_Q3SypAJwt_/view?usp=sharing)
